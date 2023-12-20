@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using RebuiltExecPetAPI.DataContexts;
-using RebuiltExecPetAPI.Models;
+using RebuiltExecPetAPI.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +36,9 @@ namespace RebuiltExecPetAPI
             });
 
             services.AddDbContext<QuoteContext>();
+            services.AddDbContext<QuoteInMemoryContext>();
             services.AddScoped<IQuoteRepository, QuoteRepository>();
+            services.AddScoped<IInMemoryQuoteRepository, InMemoryQuoteRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

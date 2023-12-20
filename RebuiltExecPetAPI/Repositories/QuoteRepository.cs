@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RebuiltExecPetAPI.DataContexts;
+using RebuiltExecPetAPI.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace RebuiltExecPetAPI.Models
+namespace RebuiltExecPetAPI.Repositories
 {
     public class QuoteRepository : IQuoteRepository
     {
@@ -63,6 +64,7 @@ namespace RebuiltExecPetAPI.Models
                 result.petOwner.PhoneNumber = Quote.petOwner.PhoneNumber;
                 result.petOwner.CellNumber = Quote.petOwner.CellNumber;
                 result.TravelType = Quote.TravelType;
+                result.petOwner.Instructions = Quote.petOwner.Instructions;
 
                 await _context.SaveChangesAsync();
 

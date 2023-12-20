@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RebuiltExecPetAPI.DataContexts;
 using RebuiltExecPetAPI.Models;
+using RebuiltExecPetAPI.Repositories;
 
 namespace RebuiltExecPetAPI.Controllers
 {

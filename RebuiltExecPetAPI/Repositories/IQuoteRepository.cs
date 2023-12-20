@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using RebuiltExecPetAPI.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace RebuiltExecPetAPI.Models
+namespace RebuiltExecPetAPI.Repositories
 {
     public interface IQuoteRepository
     {

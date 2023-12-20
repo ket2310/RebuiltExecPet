@@ -1,7 +1,10 @@
-﻿namespace RebuiltExecPetAPI.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RebuiltExecPetAPI.Models
 {
     public class PetOwner
     {
+        [Key]
         public int PetOwnerId { get; set; }
 
         public string FirstName { get; set; }
