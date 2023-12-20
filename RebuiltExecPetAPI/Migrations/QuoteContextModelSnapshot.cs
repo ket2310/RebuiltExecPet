@@ -18,9 +18,9 @@ namespace RebuiltExecPetAPI.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("RebuiltExecPetAPI.Models.Quote", b =>
+            modelBuilder.Entity("RebuiltExecPetAPI.Models.PetOwner", b =>
                 {
-                    b.Property<int>("QuoteId")
+                    b.Property<int>("PetOwnerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -43,10 +43,38 @@ namespace RebuiltExecPetAPI.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.HasKey("PetOwnerId");
+
+                    b.ToTable("PetOwners");
+
+                    b.HasData(
+                        new
+                        {
+                            PetOwnerId = 1,
+                            CellNumber = "1234567890",
+                            Email = "dablumaroon@gmail.com",
+                            FirstName = "Kirk",
+                            LastName = "Thomas",
+                            PhoneNumber = "1234567890"
+                        });
+                });
+
+            modelBuilder.Entity("RebuiltExecPetAPI.Models.Quote", b =>
+                {
+                    b.Property<int>("QuoteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<int>("TravelType")
                         .HasColumnType("int");
 
+                    b.Property<int>("petOwnerId")
+                        .HasColumnType("int");
+
                     b.HasKey("QuoteId");
+
+                    b.HasIndex("petOwnerId");
 
                     b.ToTable("Quotes");
 
@@ -54,14 +82,20 @@ namespace RebuiltExecPetAPI.Migrations
                         new
                         {
                             QuoteId = 1,
-                            CellNumber = "1234567890",
-                            Email = "dablumaroon@gmail.com",
-                            FirstName = "Kirk",
-                            Instructions = " Drive safe",
-                            LastName = "Thomas",
-                            PhoneNumber = "1234567890",
-                            TravelType = 0
+                            TravelType = 0,
+                            petOwnerId = 1
                         });
+                });
+
+            modelBuilder.Entity("RebuiltExecPetAPI.Models.Quote", b =>
+                {
+                    b.HasOne("RebuiltExecPetAPI.Models.PetOwner", "petOwner")
+                        .WithMany()
+                        .HasForeignKey("petOwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("petOwner");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,6 +11,7 @@ namespace RebuiltExecPet5_17.Pages
         [Inject]
         public IQuoteService QuoteService { get; set; }
 
+        // Instantiate all objects
         public IEnumerable<Quote> Quotes { get; set; } = new List<Quote>();
 
         protected override async Task OnInitializedAsync()

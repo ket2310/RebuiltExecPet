@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RebuiltExecPetAPI.DataContexts;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -24,12 +25,28 @@ namespace RebuiltExecPetAPI.Models
 
         public async Task<Quote> GetQuote(int QuoteId)
         {
-            return await _context.Quotes.FirstOrDefaultAsync(q  => q.QuoteId == QuoteId);
+            return await _context.Quotes.FirstOrDefaultAsync(q => q.QuoteId == QuoteId);
         }
 
         public async Task<IEnumerable<Quote>> GetQuotes()
         {
-            return await _context.Quotes.ToListAsync();
+            var quotes = await _context.Quotes.ToListAsync();
+            
+            foreach (var item in quotes)
+            {
+                var po = new PetOwner();
+                if (item.petOwnerId != 0 && item.petOwnerId != 0)
+                    po = await _context.PetOwners.FirstOrDefaultAsync(p => p.PetOwnerId == item.petOwnerId);
+
+                if (item.petOwnerId != 0)
+                {
+                    if (po != null)
+                        item.petOwner.FirstName = po.FirstName.Trim();
+                    item.petOwner.LastName = po.LastName.Trim();
+                }
+            }
+
+            return quotes;
         }
 
 
@@ -40,11 +57,11 @@ namespace RebuiltExecPetAPI.Models
 
             if (result != null)
             {
-                result.FirstName = Quote.FirstName;
-                result.LastName = Quote.LastName;
-                result.Email = Quote.Email;
-                result.PhoneNumber = Quote.PhoneNumber;
-                result.CellNumber = Quote.CellNumber;
+                result.petOwner.FirstName = Quote.petOwner.FirstName;
+                result.petOwner.LastName = Quote.petOwner.LastName;
+                result.petOwner.Email = Quote.petOwner.Email;
+                result.petOwner.PhoneNumber = Quote.petOwner.PhoneNumber;
+                result.petOwner.CellNumber = Quote.petOwner.CellNumber;
                 result.TravelType = Quote.TravelType;
 
                 await _context.SaveChangesAsync();

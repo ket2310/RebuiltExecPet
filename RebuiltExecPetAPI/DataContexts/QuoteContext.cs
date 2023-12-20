@@ -11,25 +11,31 @@ namespace RebuiltExecPetAPI.DataContexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=coyote2\\sqlexpress;Initial Catalog=ExecPetTravel;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=roadrunner2\\sqlexpress;Initial Catalog=ExecPetTravel;Integrated Security=True");
         }
 
         public DbSet<Quote> Quotes { get; set; }
+
+        public DbSet<PetOwner> PetOwners { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // Seed Employee Table
-            modelBuilder.Entity<Quote>().HasData(new Quote
+            modelBuilder.Entity<PetOwner>().HasData(new PetOwner
             {
-                QuoteId = 1,
+                PetOwnerId = 1,
                 FirstName = "Kirk",
                 LastName = "Thomas",
                 Email = "dablumaroon@gmail.com",
                 PhoneNumber = "1234567890",
                 CellNumber = "1234567890",
-                Instructions = " Drive safe",
+            });
+
+            modelBuilder.Entity<Quote>().HasData(new Quote
+            {
+                QuoteId = 1,
+                petOwnerId = 1,
                 TravelType = TravelTypes.Oneway
             });
 
