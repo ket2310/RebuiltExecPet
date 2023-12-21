@@ -412,3 +412,5 @@ C:\Users\kirthomas\Source\Repos\ket2310\RebuiltExecPet\RebuiltExecPetAPI\obj\Deb
 C:\Users\kirthomas\Source\Repos\ket2310\RebuiltExecPet\RebuiltExecPetAPI\obj\Debug\net5.0\RebuiltExecPetAPI.csproj.CopyComplete
 C:\Users\kirthomas\Source\Repos\ket2310\RebuiltExecPet\RebuiltExecPetAPI\obj\Debug\net5.0\RebuiltExecPetAPI.genruntimeconfig.cache
 C:\Users\kirthomas\Source\Repos\ket2310\RebuiltExecPet\RebuiltExecPetAPI\obj\Debug\net5.0\RebuiltExecPetAPI.csprojAssemblyReference.cache
+C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPetAPI\bin\Debug\net5.0\RebuiltExecPetAPI.StaticWebAssets.xml
+C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPetAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll

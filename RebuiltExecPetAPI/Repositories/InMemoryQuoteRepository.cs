@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ValueGeneration;
 using RebuiltExecPetAPI.DataContexts;
 using RebuiltExecPetAPI.Enums;
 using RebuiltExecPetAPI.MapModels;
@@ -21,7 +23,24 @@ namespace RebuiltExecPetAPI.Repositories
 
         public async Task<IEnumerable<Quote>> GetQuotes()
         {
-            return await _context.Quotes.ToListAsync();
+            var quotes = await _context.Quotes.ToListAsync();
+
+            foreach (var quote in quotes)
+            {
+                var petResult = await _context.PetOwners.FirstOrDefaultAsync(p => p.PetOwnerId == quote.petOwnerId);
+
+                if (petResult != null)
+                {
+                    quote.petOwner.FirstName = petResult.FirstName;
+                    quote.petOwner.LastName = petResult.LastName;
+                    quote.petOwner.Email = petResult.Email;
+                    quote.petOwner.PhoneNumber = petResult.PhoneNumber;
+                    quote.petOwner.CellNumber = petResult.CellNumber;
+                    quote.petOwner.Instructions = petResult.Instructions;
+
+                }
+            }
+            return quotes;
         }
 
         public async Task<Quote> CreateAQuote(QuoteMap obj)
@@ -66,17 +85,22 @@ namespace RebuiltExecPetAPI.Repositories
 
             if (result != null)
             {
-                result.petOwner.FirstName = Quote.petOwner.FirstName;
-                result.petOwner.LastName = Quote.petOwner.LastName;
-                result.petOwner.Email = Quote.petOwner.Email;
-                result.petOwner.PhoneNumber = Quote.petOwner.PhoneNumber;
-                result.petOwner.CellNumber = Quote.petOwner.CellNumber;
-                result.TravelType = Quote.TravelType;
-                result.petOwner.Instructions = Quote.petOwner.Instructions;
+                var petResult = await _context.PetOwners.FirstOrDefaultAsync(p => p.PetOwnerId ==
+                 result.petOwnerId);
 
-                await _context.SaveChangesAsync();
+                if (petResult != null)
+                {
+                    result.petOwner.FirstName = Quote.petOwner.FirstName;
+                    result.petOwner.LastName = Quote.petOwner.LastName;
+                    result.petOwner.Email = Quote.petOwner.Email;
+                    result.petOwner.PhoneNumber = Quote.petOwner.PhoneNumber;
+                    result.petOwner.CellNumber = Quote.petOwner.CellNumber;
+                    result.TravelType = Quote.TravelType;
+                    result.petOwner.Instructions = Quote.petOwner.Instructions;
 
-                return result;
+                    await _context.SaveChangesAsync();
+                    return result;
+                }
             }
             return null;
         }
