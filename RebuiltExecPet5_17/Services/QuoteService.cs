@@ -17,12 +17,39 @@ namespace RebuiltExecPet5_17.Services
             _httpClient = httpClient;
         }
 
-        
-               //----------------------------------------------------
+        //----------------------------------------------------
         public async Task<IEnumerable<Quote>> GetQuotes()
         {
-            var result =  await _httpClient.GetFromJsonAsync<Quote[]>(url);
+            var result = await _httpClient.GetFromJsonAsync<Quote[]>(url);
             return result;
+        }
+
+        //*************************************************************************************************
+
+
+
+        public async Task<Quote> CreateQuote(Quote quote)
+        {
+            var response = await _httpClient.PostAsJsonAsync<Quote>("api/Quotes", quote);
+
+            if (response.IsSuccessStatusCode)
+                return quote;
+            return null;
+        }
+
+        public Task<Quote> GetQuote()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<Quote> GetQuote(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<Quote> UpdateQuote(Quote updatedQuote)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

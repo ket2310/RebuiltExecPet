@@ -14,11 +14,17 @@ namespace RebuiltExecPet5_17.Components
     {
         [Inject]
         public IQuoteService QuoteService { get; set; }
-        public Quote Quote { get; set; } = new Quote();
-        public QuoteMap quoteMap { get; set; } = new QuoteMap();
+        public Quote Quote { get; set; } = new Quote { petOwner = new PetOwner() };
+        public QuoteMap quoteMap { get; set; } = new QuoteMap { petOwner = new PetOwner() };
 
         [Parameter]
         public string Id { get; set; }
+ 
+        [Inject]
+        public IMapper Mapper { get; set; }
+
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
@@ -38,16 +44,21 @@ namespace RebuiltExecPet5_17.Components
 
             Mapper.Map(Quote, quoteMap);
         }
-        [Inject]
-        public IMapper Mapper { get; set; }
-
-        [Inject]
-        public NavigationManager NavigationManager { get; set; }
-
+       
         protected async Task HandleValidSubmit()
         {
             Mapper.Map(quoteMap, Quote);
-            var result = await QuoteService.UpdateQuote(Quote);
+
+            Quote result = null;
+
+            if (Quote.QuoteId != 0)
+            {
+                result = await QuoteService.UpdateQuote(Quote);
+            }
+            else
+            {
+                result = await QuoteService.CreateQuote(Quote);
+            }
             if (result != null)
             {
                 NavigationManager.NavigateTo("/");

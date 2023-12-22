@@ -1,6 +1,6 @@
 ﻿@page "/components/quotecomponent"
-@using ExecPetTransportBlazor.Pages;
-@using ExecPetTransportBlazorAPI517.Models;
+@using RebuiltExecPet5_17.Pages;
+@using RebuiltExecPetAPI.Models;
 @inherits QuoteComponentBase
 <h3>Quote Component</h3>
 
@@ -92,83 +92,88 @@
                     </p>
                     <hr />
                     <h3>Your Contact Information</h3>
-                    <EditForm Model="@quoteModel" OnValidSubmit="HandleValidSubmit">
+                    <EditForm Model="@quoteMap" OnValidSubmit="HandleValidSubmit">
                         <div>
                             <label> Your First Name:</label>&nbsp;
-                            <InputText id="firstName" class="form-control" placeholder="First Name"
-                                       @bind-Value="quoteModel.petowner.FirstName" />
-                            <ValidationMessage For="@(() => quoteModel.petowner.FirstName)" />
-                            <br />
+                            <InputText id="firstName" @bind-value="quoteMap.petOwner.FirstName" class="form-control"></InputText>
+                            <ValidationMessage For="@(() => quoteMap.petOwner.FirstName)" />
+
                             <label> Your Last Name:</label>&nbsp;
                             <InputText id="firstName" class="form-control" placeholder="First Name"
-                                       @bind-Value="quoteModel.petowner.Lastname" />
-                            <ValidationMessage For="@(() => quoteModel.petowner.Lastname)" />
+                                       @bind-Value="quoteMap.petOwner.LastName" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.LastName)" />
+
                             <br />
                             <label>E-mail:</label>&nbsp;
                             <InputText id="email" class="form-control" placeholder="Email"
-                                       @bind-Value="quoteModel.petowner.Email" />
-                            <ValidationMessage For="@(() => quoteModel.petowner.Email)" />
+                                       @bind-Value="quoteMap.petOwner.Email" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.Email)" />
+
+
                             <br />
                             <label> Phone Number:</label>&nbsp;
                             <InputText id="phonenumber" class="form-control" placeholder="Phone Number"
-                                       @bind-Value="quoteModel.petowner.PhoneNumber" />
-                            <ValidationMessage For="@(() => quoteModel.petowner.PhoneNumber)" />
+                                       @bind-Value="quoteMap.petOwner.PhoneNumber" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.PhoneNumber)" />
                             <br />
                             <label>Cell Phone:</label>&nbsp;
                             <InputText id="cellphonw" class="form-control" placeholder="Cell Phone"
-                                       @bind-Value="quoteModel.petowner.CellNumber" />
-                            <ValidationMessage For="@(() => quoteModel.petowner.CellNumber  )" />
+                                       @bind-Value="quoteMap.petOwner.CellNumber" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.CellNumber  )" />
                             <br />
+
                             <h3>
                                 <strong>Pet Information</strong>
                             </h3>
+
                             <p>Please fill out all applicable fields</p>
+
                             <label> Number of Cats:</label>&nbsp;
                             <MyInput id="numberofcats" class="form-control" placeholder="Number of Cats"
-                                     @bind-Value="@quoteModel.petowner.cat.Quantity" />
-                            <ValidationMessage For="@(() => quoteModel.petowner.cat.Quantity)" />
+                                     @bind-Value="@quoteMap.petOwner.cat.Quantity" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.cat.Quantity)" />
                             <br />
                             <label> Breed:</label>&nbsp;
                             <InputText id="breed" class="form-control" placeholder=""
-                                       @bind-Value="quoteModel.petowner.cat.Breed" />
-                            <ValidationMessage For="@(() => quoteModel.petowner.cat.Breed)" />
+                                       @bind-Value="quoteMap.petOwner.cat.Breed" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.cat.Breed)" />
                             <br />
                             <label> Age:</label>&nbsp;
                             <MyInput id="age" class="form-control" placeholder="Age"
-                                     @bind-Value="quoteModel.petowner.cat.Age" />
-                            <ValidationMessage For="@(() => quoteModel.petowner.cat.Age)" />
+                                     @bind-Value="quoteMap.petOwner.cat.Age" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.cat.Age)" />
                             <br />
                             <label> Weight:</label>&nbsp;
                             <MyInput id="weight" class="form-control" placeholder="Weight"
-                                     @bind-Value="quoteModel.petowner.cat.Weight" />
-                            <ValidationMessage For="@(() => quoteModel.petowner.cat.Weight)" />
+                                     @bind-Value="quoteMap.petOwner.cat.Weight" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.cat.Weight)" />
                             <br />
                             <br />
                             <label> Number of Dogs:</label>&nbsp;
                             <MyInput id="numberofdogs" class="form-control" placeholder="Number of Cats"
-                                     @bind-Value="@quoteModel.petowner.dog.Quantity" />
-                            <ValidationMessage For="@(() => quoteModel.petowner.dog.Quantity)" />
+                                     @bind-Value="@quoteMap.petOwner.dog.Quantity" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.dog.Quantity)" />
                             <br />
                             <label> Breed:</label>&nbsp;
                             <InputText id="breed" class="form-control" placeholder=""
-                                       @bind-Value="quoteModel.petowner.dog.Breed" />
-                            <ValidationMessage For="@(() => quoteModel.petowner.dog.Breed)" />
+                                       @bind-Value="quoteMap.petOwner.dog.Breed" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.dog.Breed)" />
                             <br />
                             <label> Age:</label>&nbsp;
                             <MyInput id="age" class="form-control" placeholder="Age"
-                                     @bind-Value="quoteModel.petowner.dog.Age" />
-                            <ValidationMessage For="@(() => quoteModel.petowner.dog.Age)" />
+                                     @bind-Value="quoteMap.petOwner.dog.Age" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.dog.Age)" />
                             <br />
                             <label> Weight:</label>&nbsp;
                             <MyInput id="weight" class="form-control" placeholder="Weight"
-                                     @bind-Value="quoteModel.petowner.dog.Weight" />
-                            <ValidationMessage For="@(() => quoteModel.petowner.dog.Weight)" />
+                                     @bind-Value="quoteMap.petOwner.dog.Weight" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.dog.Weight)" />
                             <label>
                                 Any special instructions/medical information we need to
                                 know about your pet(s)?
                             </label>
                             <br />
-                            <textarea @bind="quoteModel.petowner.Instructions" />
+                            <textarea @bind="quoteMap.petOwner.Instructions" />
                             <br />
                             <h3><strong>Travel Information</strong></h3>
                             <label>Type of Travel</label><br />
@@ -177,9 +182,9 @@
                                 {
                                     <option value="@trip.TravelTypeId">@trip.Description</option>
                                 }
-                            </MyInput>
+                            </MyInput>*@
                             <br />
-                            <label>Date of Travel</label><br />
+                        @*    <label>Date of Travel</label><br />
                             <input type="text" placeholder="Travel Date" /><br />
                             <label>Date of Return</label><br />
                             <input type="text" placeholder="Return Date" /><br />
@@ -233,7 +238,7 @@
                             </table>
                             <br />
                             <button>Submit</button>
-                        </div>
+                        *@</div>
                     </EditForm>
                 </td>
             </tr>
