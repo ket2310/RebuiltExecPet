@@ -534,3 +534,5 @@ C:\Users\kirthomas\Source\Repos\ket2310\RebuiltExecPet\RebuiltExecPet5_17\obj\De
 C:\Users\kirthomas\Source\Repos\ket2310\RebuiltExecPet\RebuiltExecPet5_17\obj\Debug\net5.0\RebuiltExecPet5_17.Views.pdb
 C:\Users\kirthomas\Source\Repos\ket2310\RebuiltExecPet\RebuiltExecPet5_17\obj\Debug\net5.0\RebuiltExecPet5_17.csproj.CopyComplete
 C:\Users\kirthomas\Source\Repos\ket2310\RebuiltExecPet\RebuiltExecPet5_17\obj\Debug\net5.0\RebuiltExecPet5_17.genruntimeconfig.cache
+C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\bin\Debug\net5.0\RebuiltExecPetAPI.StaticWebAssets.xml
+C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll

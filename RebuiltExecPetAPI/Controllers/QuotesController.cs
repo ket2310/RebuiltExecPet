@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RebuiltExecPetAPI.DataContexts;
+using RebuiltExecPetAPI.MapModels;
 using RebuiltExecPetAPI.Models;
 using RebuiltExecPetAPI.Repositories;
 
@@ -26,68 +27,61 @@ namespace RebuiltExecPetAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Quote>>> GetQuotes()
         {
-            try
-            {
-                return Ok(await _quoteRepository.GetQuotes());
-            }
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from the database");
-
-            }
+            return Ok(await _quoteRepository.GetQuotes());
         }
 
         // GET: api/Quotes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Quote>> GetQuote(int id)
-        {
-            var quote = await _quoteRepository.GetQuote(id);
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<Quote>> GetQuote(int id)
+        //{
+        //    var quote = await _context.Quotes.FindAsync(id);
 
-            if (quote == null)
-            {
-                return NotFound();
-            }
+        //    if (quote == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return quote;
-        }
+        //    return quote;
+        //}
 
         // PUT: api/Quotes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateQuote(int id, Quote quote)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutQuote(int id, Quote quote)
         {
+            if (id != quote.QuoteId)
+            {
+                return BadRequest();
+            }
+
             try
             {
-                if (id != quote.QuoteId)
-                    return BadRequest("Quote ID mismatch");
-
-                var QuoteToUpdate = await  _quoteRepository.GetQuote(id);
-
-                if (QuoteToUpdate == null)
-                    return NotFound($"Quote with Id = {id} not found");
-
-                return Ok(await _quoteRepository.UpdateQuote(quote));
+                await _quoteRepository.UpdateQuote(quote);
             }
-            catch (Exception)
+            catch (DbUpdateConcurrencyException)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error updating data");
+                if (!QuoteExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
             }
+
+            return NoContent();
         }
 
         // POST: api/Quotes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPost]
-        //public async Task<ActionResult<Quote>> PostQuote(Quote quote)
-        //{
-        //    _context.Quotes.Add(quote);
-        //    await _context.SaveChangesAsync();
+        [HttpPost]
+        public async Task<ActionResult<Quote>> PostQuote(QuoteMap quote)
+        {
+            return Ok(await _quoteRepository.CreateAQuote(quote));
+        }
 
-        //    return CreatedAtAction("GetQuote", new { id = quote.QuoteId }, quote);
-        //}
-
-        //// DELETE: api/Quotes/5
+        // DELETE: api/Quotes/5
         //[HttpDelete("{id}")]
         //public async Task<IActionResult> DeleteQuote(int id)
         //{
@@ -103,9 +97,10 @@ namespace RebuiltExecPetAPI.Controllers
         //    return NoContent();
         //}
 
-        //private bool QuoteExists(int id)
-        //{
-        //    return _context.Quotes.Any(e => e.QuoteId == id);
-        //}
+        private bool QuoteExists(int id)
+        {
+            return _quoteRepository.DoesItLive(id);
+        }
+
     }
 }

@@ -16,18 +16,20 @@ namespace RebuiltExecPetAPI.Controllers
     [ApiController]
     public class InMemoryQuotesController : ControllerBase
     {
-        private readonly IInMemoryQuoteRepository _inMemoryQuoteRepository;
+        private readonly IInMemoryQuoteRepository _quoteRepository;
 
 
         public InMemoryQuotesController(IInMemoryQuoteRepository inMemoryQuoteRepository)
         {
-            _inMemoryQuoteRepository = inMemoryQuoteRepository;
+            _quoteRepository = inMemoryQuoteRepository;
         }
+   
+        
         // GET: api/InMemoryQuotes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Quote>>> GetQuotes()
         {
-            return Ok(await _inMemoryQuoteRepository.GetQuotes());
+            return Ok(await _quoteRepository.GetQuotes());
         }
 
         // GET: api/InMemoryQuotes/5
@@ -56,7 +58,7 @@ namespace RebuiltExecPetAPI.Controllers
 
             try
             {
-                await _inMemoryQuoteRepository.UpdateQuote(quote);
+                await _quoteRepository.UpdateQuote(quote);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -78,7 +80,7 @@ namespace RebuiltExecPetAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Quote>> PostQuote(QuoteMap quote)
         {
-            return Ok(await _inMemoryQuoteRepository.CreateAQuote(quote));
+            return Ok(await _quoteRepository.CreateAQuote(quote));
         }
 
         // DELETE: api/InMemoryQuotes/5
@@ -99,7 +101,7 @@ namespace RebuiltExecPetAPI.Controllers
 
         private bool QuoteExists(int id)
         {
-            return _inMemoryQuoteRepository.DoesItLive(id);
+            return _quoteRepository.DoesItLive(id);
         }
     }
 }

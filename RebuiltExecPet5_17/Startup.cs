@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RebuiltExecPet5_17.Data;
+using RebuiltExecPet5_17.Models;
 using RebuiltExecPet5_17.Services;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace RebuiltExecPet5_17
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
-            //services.AddAutoMapper(typeof(QuoteProfile));
+            services.AddAutoMapper(typeof(QuoteProfile));
 
             services.AddHttpClient<IQuoteService,QuoteService>(client =>
             {

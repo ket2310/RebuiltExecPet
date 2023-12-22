@@ -21,6 +21,7 @@ namespace RebuiltExecPetAPI.Repositories
             _context = context;
         }
 
+        //-------------------------------------------------
         public async Task<IEnumerable<Quote>> GetQuotes()
         {
             var quotes = await _context.Quotes.ToListAsync();
