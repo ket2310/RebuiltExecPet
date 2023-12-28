@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JeLARMOZTmWxuhegYwkmn+9ixHXp9ZY03zfxWjOj0SZwhbfzTHuddJAp9AhRHVT2rE8ygoaZLx3b3axYLn4HXA==",
+  "dgSpecHash": "iNGgkGOZGGrN1kh00GvtmAz2fwe1DObcaG5vinLHbW4se5/j5p4vh+3Jy9OfxQZKVKbg32ZTYWhmTANQtbaehw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dablu\\source\\repos\\ExecPetBlazor2\\RebuiltExecPet\\RebuiltExecPet5_17\\RebuiltExecPet5_17.csproj",
+  "projectFilePath": "C:\\Users\\dablu\\source\\repos\\RebuiltExecPet\\RebuiltExecPet\\RebuiltExecPet5_17\\RebuiltExecPet5_17.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dablu\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\dablu\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

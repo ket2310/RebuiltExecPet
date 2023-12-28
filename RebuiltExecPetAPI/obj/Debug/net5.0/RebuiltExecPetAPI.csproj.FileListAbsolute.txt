@@ -414,3 +414,13 @@ C:\Users\kirthomas\Source\Repos\ket2310\RebuiltExecPet\RebuiltExecPetAPI\obj\Deb
 C:\Users\kirthomas\Source\Repos\ket2310\RebuiltExecPet\RebuiltExecPetAPI\obj\Debug\net5.0\RebuiltExecPetAPI.csprojAssemblyReference.cache
 C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPetAPI\bin\Debug\net5.0\RebuiltExecPetAPI.StaticWebAssets.xml
 C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPetAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\dablu\source\repos\RebuiltExecPet\RebuiltExecPet\RebuiltExecPetAPI\obj\Debug\net5.0\RebuiltExecPetAPI.csproj.AssemblyReference.cache
+C:\Users\dablu\source\repos\RebuiltExecPet\RebuiltExecPet\RebuiltExecPetAPI\obj\Debug\net5.0\RebuiltExecPetAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dablu\source\repos\RebuiltExecPet\RebuiltExecPet\RebuiltExecPetAPI\obj\Debug\net5.0\RebuiltExecPetAPI.AssemblyInfoInputs.cache
+C:\Users\dablu\source\repos\RebuiltExecPet\RebuiltExecPet\RebuiltExecPetAPI\obj\Debug\net5.0\RebuiltExecPetAPI.AssemblyInfo.cs
+C:\Users\dablu\source\repos\RebuiltExecPet\RebuiltExecPet\RebuiltExecPetAPI\obj\Debug\net5.0\RebuiltExecPetAPI.csproj.CoreCompileInputs.cache
+C:\Users\dablu\source\repos\RebuiltExecPet\RebuiltExecPet\RebuiltExecPetAPI\obj\Debug\net5.0\RebuiltExecPetAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\dablu\source\repos\RebuiltExecPet\RebuiltExecPet\RebuiltExecPetAPI\obj\Debug\net5.0\RebuiltExecPetAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\dablu\source\repos\RebuiltExecPet\RebuiltExecPet\RebuiltExecPetAPI\obj\Debug\net5.0\RebuiltExecPetAPI.dll
+C:\Users\dablu\source\repos\RebuiltExecPet\RebuiltExecPet\RebuiltExecPetAPI\obj\Debug\net5.0\refint\RebuiltExecPetAPI.dll
+C:\Users\dablu\source\repos\RebuiltExecPet\RebuiltExecPet\RebuiltExecPetAPI\obj\Debug\net5.0\RebuiltExecPetAPI.pdb
