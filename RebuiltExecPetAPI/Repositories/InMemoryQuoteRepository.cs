@@ -24,21 +24,40 @@ namespace RebuiltExecPetAPI.Repositories
         //-------------------------------------------------
         public async Task<IEnumerable<Quote>> GetQuotes()
         {
-            var quotes = await _context.Quotes.ToListAsync();
+            mvar quotes = await _context.Quotes.ToListAsync();
 
             foreach (var quote in quotes)
             {
-                var petResult = await _context.PetOwners.FirstOrDefaultAsync(p => p.PetOwnerId == quote.petOwnerId);
+                var owner = await _context.PetOwners.FirstOrDefaultAsync(p => p.PetOwnerId == quote.petOwnerId);
 
-                if (petResult != null)
+                if (owner != null)
                 {
-                    quote.petOwner.FirstName = petResult.FirstName;
-                    quote.petOwner.LastName = petResult.LastName;
-                    quote.petOwner.Email = petResult.Email;
-                    quote.petOwner.PhoneNumber = petResult.PhoneNumber;
-                    quote.petOwner.CellNumber = petResult.CellNumber;
-                    quote.petOwner.Instructions = petResult.Instructions;
+                    quote.petOwner.FirstName = owner.FirstName;
+                    quote.petOwner.LastName = owner.LastName;
+                    quote.petOwner.Email = owner.Email;
+                    quote.petOwner.PhoneNumber = owner.PhoneNumber;
+                    quote.petOwner.CellNumber = owner.CellNumber;
+                    quote.petOwner.Instructions = owner.Instructions;
 
+                    var cat = await _context.Cats.FirstOrDefaultAsync(c => c.CatId == quote.petOwner.catId);
+                    if (cat != null)
+                    {
+                        quote.petOwner.cat.Age = cat.Age;
+                        quote.petOwner.cat.Quantity = cat.Quantity;
+                        quote.petOwner.cat.Breed = cat.Breed;
+                        quote.petOwner.cat.Weight = cat.Weight;
+                    }
+
+                    var dog = await _context.Dogs.FirstOrDefaultAsync(d => d.DogId == quote.petOwner.dogId);
+                    if (dog !=null)
+                    {
+                        quote.petOwner.dog.Age = dog.Age;
+                        quote.petOwner.dog.Quantity = dog.Quantity;
+                        quote.petOwner.dog.Breed = dog.Breed;
+                        quote.petOwner.dog.Weight = dog.Weight;
+                    }
+                    await _context.SaveChangesAsync();
+                    return quotes;
                 }
             }
             return quotes;
@@ -72,6 +91,17 @@ namespace RebuiltExecPetAPI.Repositories
             q.petOwner.PhoneNumber = obj.petOwner.PhoneNumber;
             q.petOwner.CellNumber = obj.petOwner.CellNumber;
             q.petOwner.Instructions = obj.petOwner.Instructions;
+            q.petOwner.cat = new Cat();
+            q.petOwner.cat.Breed = obj.petOwner.cat.Breed;
+            q.petOwner.cat.Quantity = obj.petOwner.cat.Quantity;
+            q.petOwner.cat.Age  =  obj.petOwner.cat.Age;
+            q.petOwner.cat.Weight  = obj.petOwner.cat.Weight;
+
+            q.petOwner.dog = new Dog();
+            q.petOwner.dog.Breed = obj.petOwner.dog.Breed;
+            q.petOwner.dog.Quantity =   obj.petOwner.dog.Quantity;
+            q.petOwner.dog.Age  = obj.petOwner.dog.Age;
+            q.petOwner.dog.Weight = obj.petOwner.dog.Weight;
             q.TravelType = obj.TravelType;
 
             await _context.Quotes.AddAsync(q);
@@ -86,10 +116,9 @@ namespace RebuiltExecPetAPI.Repositories
 
             if (result != null)
             {
-                var petResult = await _context.PetOwners.FirstOrDefaultAsync(p => p.PetOwnerId ==
-                 result.petOwnerId);
-
-                if (petResult != null)
+                
+                if (await _context.PetOwners.FirstOrDefaultAsync(p => p.PetOwnerId ==
+                 result.petOwnerId) != null)
                 {
                     result.petOwner.FirstName = Quote.petOwner.FirstName;
                     result.petOwner.LastName = Quote.petOwner.LastName;
@@ -98,7 +127,22 @@ namespace RebuiltExecPetAPI.Repositories
                     result.petOwner.CellNumber = Quote.petOwner.CellNumber;
                     result.TravelType = Quote.TravelType;
                     result.petOwner.Instructions = Quote.petOwner.Instructions;
+            
+                    if(await _context.Cats.FirstOrDefaultAsync(c => c.CatId == result.petOwner.catId) != null)
+                    {
+                        result.petOwner.cat.Age = Quote.petOwner.cat.Age;
+                        result.petOwner.cat.Quantity = Quote.petOwner.cat.Quantity;
+                        result.petOwner.cat.Breed = Quote.petOwner.cat.Breed;
+                        result.petOwner.cat.Weight = Quote.petOwner.cat.Weight;
+                    }
 
+                    if (await _context.Dogs.FirstOrDefaultAsync(c => c.DogId == result.petOwner.dogId) != null)
+                    {
+                        result.petOwner.dog.Age = Quote.petOwner.dog.Age;
+                        result.petOwner.dog.Quantity = Quote.petOwner.dog.Quantity;
+                        result.petOwner.dog.Breed = Quote.petOwner.dog.Breed;
+                        result.petOwner.dog.Weight = Quote.petOwner.dog.Weight;
+                    }
                     await _context.SaveChangesAsync();
                     return result;
                 }

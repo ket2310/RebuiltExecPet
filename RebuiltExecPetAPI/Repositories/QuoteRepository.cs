@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
 using RebuiltExecPetAPI.DataContexts;
 using RebuiltExecPetAPI.MapModels;
 using RebuiltExecPetAPI.Models;
@@ -37,6 +38,27 @@ namespace RebuiltExecPetAPI.Repositories
                     quote.petOwner.CellNumber = petResult.CellNumber;
                     quote.petOwner.Instructions = petResult.Instructions;
 
+                    var catResult = await _context.Cats.FirstOrDefaultAsync(c => c.CatId == petResult.catId);
+
+                    if (catResult != null)
+                    {
+                        quote.petOwner.cat.Quantity= catResult.Quantity;
+                        quote.petOwner.cat.Breed= catResult.Breed;
+                        quote.petOwner.cat.Age= catResult.Age;
+                        quote.petOwner.cat.Weight= catResult.Weight;
+                    }
+
+
+                    var dogResult = await _context.Dogs.FirstOrDefaultAsync(d => d.DogId == petResult.dogId);
+
+                    if (dogResult != null)
+                    {
+                        quote.petOwner.dog.Quantity = dogResult.Quantity;
+                        quote.petOwner.dog.Breed = dogResult.Breed;
+                        quote.petOwner.dog.Age = dogResult.Age;
+                        quote.petOwner.dog.Weight = dogResult.Weight;
+                    }
+
                 }
             }
             return quotes;
@@ -72,6 +94,18 @@ namespace RebuiltExecPetAPI.Repositories
             q.petOwner.Instructions = obj.petOwner.Instructions;
             q.TravelType = obj.TravelType;
 
+            q.petOwner.cat = new Cat();
+            q.petOwner.cat.Quantity = obj.petOwner.cat.Quantity;
+            q.petOwner.cat.Weight = obj.petOwner.cat.Weight;
+            q.petOwner.cat.Breed = obj.petOwner.cat.Breed;
+            q.petOwner.cat.Age  = obj.petOwner.cat.Age;
+
+            q.petOwner.dog = new Dog();
+            q.petOwner.dog.Quantity = obj.petOwner.dog.Quantity;
+            q.petOwner.dog.Weight = obj.petOwner.dog.Weight;
+            q.petOwner.dog.Breed = obj.petOwner.dog.Breed;
+            q.petOwner.dog.Age = obj.petOwner.dog.Age;
+
             await _context.Quotes.AddAsync(q);
             await _context.SaveChangesAsync();
 
@@ -97,6 +131,26 @@ namespace RebuiltExecPetAPI.Repositories
                     result.TravelType = Quote.TravelType;
                     result.petOwner.Instructions = Quote.petOwner.Instructions;
 
+                    var catResult = await _context.Cats.FirstOrDefaultAsync(c => c.CatId == petResult.catId);
+
+                    if (catResult != null)
+                    {
+                        Quote.petOwner.cat.Quantity = catResult.Quantity;
+                        Quote.petOwner.cat.Breed = catResult.Breed;
+                        Quote.petOwner.cat.Age = catResult.Age;
+                        Quote.petOwner.cat.Weight = catResult.Weight;
+                    }
+
+
+                    var dogResult = await _context.Dogs.FirstOrDefaultAsync(c => c.DogId == petResult.dogId);
+
+                    if (dogResult != null)
+                    {
+                        Quote.petOwner.dog.Quantity = dogResult.Quantity;
+                        Quote.petOwner.dog.Breed = dogResult.Breed;
+                        Quote.petOwner.dog.Age = dogResult.Age;
+                        Quote.petOwner.dog.Weight = dogResult.Weight;
+                    }
                     await _context.SaveChangesAsync();
                     return result;
                 }

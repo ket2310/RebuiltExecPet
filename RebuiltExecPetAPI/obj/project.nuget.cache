@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "D4FOCVEs4kjbD415drrBVdTYBLiQEx4/GaT9cjXoCcJQ4DeF+WnnRrBJJo8aVpgnPlNf4WpDoHzW/kodOgWfnQ==",
+  "dgSpecHash": "6jb2Tenr2ba+AJFhMEbBHF6Cf+YediiXm5iYNMu4CCh8H19jfD/9nTlPQBO+wZlUD4/RUGjh0dP23tXzmlS7Fg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dablu\\source\\repos\\RebuiltExecPet\\RebuildExecPetTravel\\RebuiltExecPetAPI\\RebuiltExecPetAPI.csproj",
+  "projectFilePath": "C:\\Users\\dablu\\source\\repos\\ExecPetBlazor2\\RebuiltExecPet\\RebuiltExecPetAPI\\RebuiltExecPetAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dablu\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\dablu\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ExecPetTransportBlazorAPI517.Models
+namespace RebuiltExecPetAPI.Models
 {
     public class Cat
     {
@@ -20,7 +20,7 @@ namespace ExecPetTransportBlazorAPI517.Models
 
         public int Weight { get; set; }
 
-        public Owner Owner { get; set; }
+        
     }
 }
 

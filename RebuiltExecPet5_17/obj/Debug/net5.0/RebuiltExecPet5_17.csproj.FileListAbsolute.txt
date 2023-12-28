@@ -310,7 +310,6 @@ C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\obj
 C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\obj\Debug\net5.0\RebuiltExecPet5_17.AssemblyInfoInputs.cache
 C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\obj\Debug\net5.0\RebuiltExecPet5_17.AssemblyInfo.cs
 C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\obj\Debug\net5.0\RebuiltExecPet5_17.csproj.CoreCompileInputs.cache
-C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\obj\Debug\net5.0\RebuiltExecPet5_17.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\obj\Debug\net5.0\RebuiltExecPet5_17.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\obj\Debug\net5.0\RebuiltExecPet5_17.RazorComponent.input.cache
 C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
@@ -536,3 +535,11 @@ C:\Users\kirthomas\Source\Repos\ket2310\RebuiltExecPet\RebuiltExecPet5_17\obj\De
 C:\Users\kirthomas\Source\Repos\ket2310\RebuiltExecPet\RebuiltExecPet5_17\obj\Debug\net5.0\RebuiltExecPet5_17.genruntimeconfig.cache
 C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\bin\Debug\net5.0\RebuiltExecPetAPI.StaticWebAssets.xml
 C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\obj\Debug\net5.0\RazorDeclaration\Components\QuoteComponent.razor.g.cs
+C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\obj\Debug\net5.0\Razor\Components\QuoteComponent.razor.g.cs

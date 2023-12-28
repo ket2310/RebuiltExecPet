@@ -18,6 +18,54 @@ namespace RebuiltExecPetAPI.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("RebuiltExecPetAPI.Models.Cat", b =>
+                {
+                    b.Property<int>("CatId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Breed")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Weight")
+                        .HasColumnType("int");
+
+                    b.HasKey("CatId");
+
+                    b.ToTable("Cats");
+                });
+
+            modelBuilder.Entity("RebuiltExecPetAPI.Models.Dog", b =>
+                {
+                    b.Property<int>("DogId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Breed")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Weight")
+                        .HasColumnType("int");
+
+                    b.HasKey("DogId");
+
+                    b.ToTable("Dogs");
+                });
+
             modelBuilder.Entity("RebuiltExecPetAPI.Models.PetOwner", b =>
                 {
                     b.Property<int>("PetOwnerId")
@@ -43,7 +91,17 @@ namespace RebuiltExecPetAPI.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("catId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("dogId")
+                        .HasColumnType("int");
+
                     b.HasKey("PetOwnerId");
+
+                    b.HasIndex("catId");
+
+                    b.HasIndex("dogId");
 
                     b.ToTable("PetOwners");
 
@@ -55,7 +113,9 @@ namespace RebuiltExecPetAPI.Migrations
                             Email = "dablumaroon@gmail.com",
                             FirstName = "Kirk",
                             LastName = "Thomas",
-                            PhoneNumber = "1234567890"
+                            PhoneNumber = "1234567890",
+                            catId = 0,
+                            dogId = 0
                         });
                 });
 
@@ -85,6 +145,25 @@ namespace RebuiltExecPetAPI.Migrations
                             TravelType = 0,
                             petOwnerId = 1
                         });
+                });
+
+            modelBuilder.Entity("RebuiltExecPetAPI.Models.PetOwner", b =>
+                {
+                    b.HasOne("RebuiltExecPetAPI.Models.Cat", "cat")
+                        .WithMany()
+                        .HasForeignKey("catId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RebuiltExecPetAPI.Models.Dog", "dog")
+                        .WithMany()
+                        .HasForeignKey("dogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("cat");
+
+                    b.Navigation("dog");
                 });
 
             modelBuilder.Entity("RebuiltExecPetAPI.Models.Quote", b =>

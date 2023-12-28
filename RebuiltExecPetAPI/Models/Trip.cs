@@ -12,8 +12,6 @@ namespace ExecPetTransportBlazorAPI517.Models
         public int TripId { get; set; }
 
         public int TravelTypeId { get; set; }
-        public IEnumerable<TravelType>  TravelType { get; set; }
-
         public DateTime traveldate { get; set; }
 
         public DateTime returndate { get; set; }
@@ -37,9 +35,7 @@ namespace ExecPetTransportBlazorAPI517.Models
 
         public string otherinfo { get; set; }
 
-        public int quoteId { get; set; }
-
-        public Quote quote { get; set; }
+   
     }
 
 }

@@ -17,6 +17,8 @@ namespace RebuiltExecPetAPI.DataContexts
         public DbSet<Quote> Quotes { get; set; }
 
         public DbSet<PetOwner> PetOwners { get; set; }
+        public DbSet<Cat> Cats { get; set; }
+        public DbSet<Dog> Dogs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

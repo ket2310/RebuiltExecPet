@@ -18,13 +18,11 @@ namespace RebuiltExecPetAPI.Controllers
     {
         private readonly IInMemoryQuoteRepository _quoteRepository;
 
-
         public InMemoryQuotesController(IInMemoryQuoteRepository inMemoryQuoteRepository)
         {
             _quoteRepository = inMemoryQuoteRepository;
         }
-   
-        
+      
         // GET: api/InMemoryQuotes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Quote>>> GetQuotes()
