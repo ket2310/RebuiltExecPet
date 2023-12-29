@@ -46,7 +46,7 @@ namespace RebuiltExecPetAPI.Controllers
 
         // PUT: api/Quotes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public async Task<IActionResult> PutQuote(int id, Quote quote)
         {
             if (id != quote.QuoteId)

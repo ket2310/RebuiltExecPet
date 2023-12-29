@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ValueGeneration;
+﻿using Microsoft.EntityFrameworkCore;
 using RebuiltExecPetAPI.DataContexts;
-using RebuiltExecPetAPI.Enums;
 using RebuiltExecPetAPI.MapModels;
 using RebuiltExecPetAPI.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -66,22 +62,6 @@ namespace RebuiltExecPetAPI.Repositories
         public async Task<Quote> CreateAQuote(QuoteMap obj)
         {
 
-            /*  
-         
-            {
-              "petOwner": {
-                "petOwnerId": 1,
-                "firstName": "Kirk",
-                "lastName": "Thomas",
-                "email": "dablumaroon@gmail.com",
-                "phoneNumber": "1-444-555-6666",
-                "cellNumber": "1=999-222-3333",
-                "instructions": "Drive slowly"
-              },
-              "travelType": 2
-            }
-            
-             */
             Quote q = new Quote();
             q.petOwner = new PetOwner();
             q.petOwner.PetOwnerId = 1;
@@ -110,9 +90,9 @@ namespace RebuiltExecPetAPI.Repositories
             return q;
         }
 
-        public async Task<Quote> UpdateQuote(Quote Quote)
+        public async Task<Quote> UpdateQuote(Quote updQuote)
         {
-            var result = await _context.Quotes.FirstOrDefaultAsync(q => q.QuoteId == Quote.QuoteId);
+            var result = await _context.Quotes.FirstOrDefaultAsync(q => q.QuoteId == updQuote.QuoteId);
 
             if (result != null)
             {
@@ -120,28 +100,28 @@ namespace RebuiltExecPetAPI.Repositories
                 if (await _context.PetOwners.FirstOrDefaultAsync(p => p.PetOwnerId ==
                  result.petOwnerId) != null)
                 {
-                    result.petOwner.FirstName = Quote.petOwner.FirstName;
-                    result.petOwner.LastName = Quote.petOwner.LastName;
-                    result.petOwner.Email = Quote.petOwner.Email;
-                    result.petOwner.PhoneNumber = Quote.petOwner.PhoneNumber;
-                    result.petOwner.CellNumber = Quote.petOwner.CellNumber;
-                    result.TravelType = Quote.TravelType;
-                    result.petOwner.Instructions = Quote.petOwner.Instructions;
+                    result.petOwner.FirstName = updQuote.petOwner.FirstName;
+                    result.petOwner.LastName = updQuote.petOwner.LastName;
+                    result.petOwner.Email = updQuote.petOwner.Email;
+                    result.petOwner.PhoneNumber = updQuote.petOwner.PhoneNumber;
+                    result.petOwner.CellNumber = updQuote.petOwner.CellNumber;
+                    result.TravelType = updQuote.TravelType;
+                    result.petOwner.Instructions = updQuote.petOwner.Instructions;
             
                     if(await _context.Cats.FirstOrDefaultAsync(c => c.CatId == result.petOwner.catId) != null)
                     {
-                        result.petOwner.cat.Age = Quote.petOwner.cat.Age;
-                        result.petOwner.cat.Quantity = Quote.petOwner.cat.Quantity;
-                        result.petOwner.cat.Breed = Quote.petOwner.cat.Breed;
-                        result.petOwner.cat.Weight = Quote.petOwner.cat.Weight;
+                        result.petOwner.cat.Age = updQuote.petOwner.cat.Age;
+                        result.petOwner.cat.Quantity = updQuote.petOwner.cat.Quantity;
+                        result.petOwner.cat.Breed = updQuote.petOwner.cat.Breed;
+                        result.petOwner.cat.Weight = updQuote.petOwner.cat.Weight;
                     }
 
                     if (await _context.Dogs.FirstOrDefaultAsync(c => c.DogId == result.petOwner.dogId) != null)
                     {
-                        result.petOwner.dog.Age = Quote.petOwner.dog.Age;
-                        result.petOwner.dog.Quantity = Quote.petOwner.dog.Quantity;
-                        result.petOwner.dog.Breed = Quote.petOwner.dog.Breed;
-                        result.petOwner.dog.Weight = Quote.petOwner.dog.Weight;
+                        result.petOwner.dog.Age = updQuote.petOwner.dog.Age;
+                        result.petOwner.dog.Quantity = updQuote.petOwner.dog.Quantity;
+                        result.petOwner.dog.Breed = updQuote.petOwner.dog.Breed;
+                        result.petOwner.dog.Weight = updQuote.petOwner.dog.Weight;
                     }
                     await _context.SaveChangesAsync();
                     return result;

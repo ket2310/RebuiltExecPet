@@ -68,7 +68,6 @@ namespace RebuiltExecPetAPI.Repositories
         {
             Quote q = new Quote();
             q.petOwner = new PetOwner();
-            q.petOwner.PetOwnerId = 1;
             q.petOwner.FirstName = obj.petOwner.FirstName;
             q.petOwner.LastName = obj.petOwner.LastName;
             q.petOwner.Email = obj.petOwner.Email;
@@ -95,44 +94,38 @@ namespace RebuiltExecPetAPI.Repositories
             return q;
         }
 
-        public async Task<Quote> UpdateQuote(Quote Quote)
+        public async Task<Quote> UpdateQuote(Quote updQuote)
         {
-            var result = await _context.Quotes.FirstOrDefaultAsync(q => q.QuoteId == Quote.QuoteId);
+            var result = await _context.Quotes.FirstOrDefaultAsync(q => q.QuoteId == updQuote.QuoteId);
 
             if (result != null)
             {
-                var petResult = await _context.PetOwners.FirstOrDefaultAsync(p => p.PetOwnerId ==
-                 result.petOwnerId);
 
-                if (petResult != null)
+                if (await _context.PetOwners.FirstOrDefaultAsync(p => p.PetOwnerId ==
+                 result.petOwnerId) != null)
                 {
-                    result.petOwner.FirstName = Quote.petOwner.FirstName;
-                    result.petOwner.LastName = Quote.petOwner.LastName;
-                    result.petOwner.Email = Quote.petOwner.Email;
-                    result.petOwner.PhoneNumber = Quote.petOwner.PhoneNumber;
-                    result.petOwner.CellNumber = Quote.petOwner.CellNumber;
-                    result.TravelType = Quote.TravelType;
-                    result.petOwner.Instructions = Quote.petOwner.Instructions;
+                    result.petOwner.FirstName = updQuote.petOwner.FirstName;
+                    result.petOwner.LastName = updQuote.petOwner.LastName;
+                    result.petOwner.Email = updQuote.petOwner.Email;
+                    result.petOwner.PhoneNumber = updQuote.petOwner.PhoneNumber;
+                    result.petOwner.CellNumber = updQuote.petOwner.CellNumber;
+                    result.TravelType = updQuote.TravelType;
+                    result.petOwner.Instructions = updQuote.petOwner.Instructions;
 
-                    var catResult = await _context.Cats.FirstOrDefaultAsync(c => c.CatId == petResult.catId);
-
-                    if (catResult != null)
+                    if (await _context.Cats.FirstOrDefaultAsync(c => c.CatId == result.petOwner.catId) != null)
                     {
-                        Quote.petOwner.cat.Quantity = catResult.Quantity;
-                        Quote.petOwner.cat.Breed = catResult.Breed;
-                        Quote.petOwner.cat.Age = catResult.Age;
-                        Quote.petOwner.cat.Weight = catResult.Weight;
+                        result.petOwner.cat.Age = updQuote.petOwner.cat.Age;
+                        result.petOwner.cat.Quantity = updQuote.petOwner.cat.Quantity;
+                        result.petOwner.cat.Breed = updQuote.petOwner.cat.Breed;
+                        result.petOwner.cat.Weight = updQuote.petOwner.cat.Weight;
                     }
 
-
-                    var dogResult = await _context.Dogs.FirstOrDefaultAsync(c => c.DogId == petResult.dogId);
-
-                    if (dogResult != null)
+                    if (await _context.Dogs.FirstOrDefaultAsync(c => c.DogId == result.petOwner.dogId) != null)
                     {
-                        Quote.petOwner.dog.Quantity = dogResult.Quantity;
-                        Quote.petOwner.dog.Breed = dogResult.Breed;
-                        Quote.petOwner.dog.Age = dogResult.Age;
-                        Quote.petOwner.dog.Weight = dogResult.Weight;
+                        result.petOwner.dog.Age = updQuote.petOwner.dog.Age;
+                        result.petOwner.dog.Quantity = updQuote.petOwner.dog.Quantity;
+                        result.petOwner.dog.Breed = updQuote.petOwner.dog.Breed;
+                        result.petOwner.dog.Weight = updQuote.petOwner.dog.Weight;
                     }
                     await _context.SaveChangesAsync();
                     return result;

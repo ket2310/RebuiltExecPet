@@ -8,10 +8,10 @@ namespace RebuiltExecPetAPI.DataContexts
 {
     public class QuoteContext : DbContext
     {
-
+        private readonly string sysName = Environment.MachineName;
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=roadrunner2\\sqlexpress;Initial Catalog=ExecPetTravel;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=" + sysName + "\\sqlexpress;Initial Catalog=ExecPetTravel;Integrated Security=True");
         }
 
         public DbSet<Quote> Quotes { get; set; }
@@ -42,6 +42,6 @@ namespace RebuiltExecPetAPI.DataContexts
             });
 
 
+            }
         }
-    }
 }
