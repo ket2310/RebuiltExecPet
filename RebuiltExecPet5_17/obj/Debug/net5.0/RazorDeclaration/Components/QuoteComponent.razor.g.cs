@@ -96,6 +96,13 @@ using RebuiltExecPetAPI.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\dablu\source\repos\RebuiltExecPet\RebuiltExecPet\RebuiltExecPet5_17\Components\QuoteComponent.razor"
+using RebuiltExecPetAPI.Enums;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Components.RouteAttribute("/components/quotecomponent")]
     public partial class QuoteComponent : QuoteComponentBase
     {

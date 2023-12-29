@@ -1,6 +1,7 @@
 ﻿@page "/components/quotecomponent"
 @using RebuiltExecPet5_17.Pages;
 @using RebuiltExecPetAPI.Models;
+@using RebuiltExecPetAPI.Enums;
 @inherits QuoteComponentBase
 
 
@@ -8,7 +9,7 @@
     <div>
         <h1>
             <center>
-                
+
                 <strong>Request a FREE QUOTE - FILL OUT FORM BELOW</strong>
             </center>
             <br />
@@ -94,11 +95,12 @@
                     <EditForm Model="@quoteMap" OnValidSubmit="HandleValidSubmit">
                         <div>
                             <label> Your First Name:</label>&nbsp;
-                            <InputText id="firstName" @bind-Value="quoteMap.petOwner.FirstName" class="form-control"></InputText>
+                            <InputText id="firstName" @bind-Value="quoteMap.petOwner.FirstName" class="form-control" placeholder="First Name">
+                            </InputText>
                             <ValidationMessage For="@(() => quoteMap.petOwner.FirstName)" />
 
                             <label> Your Last Name:</label>&nbsp;
-                            <InputText id="firstName" class="form-control" placeholder="First Name"
+                            <InputText id="lastName" class="form-control" placeholder="Last Name"
                                        @bind-Value="quoteMap.petOwner.LastName" />
                             <ValidationMessage For="@(() => quoteMap.petOwner.LastName)" />
 
@@ -127,44 +129,44 @@
 
                             <p>Please fill out all applicable fields</p>
 
-                                                        <label> Number of Cats:</label>&nbsp;
-                            <MyInput id="numberofcats" class="form-control" placeholder="Number of Cats"
+                            <label> Number of Cats:</label>&nbsp;
+                            <InputNumber id="numberofcats" class="form-control" placeholder="Number of Cats"
                                      @bind-Value="@quoteMap.petOwner.cat.Quantity" />
                             <ValidationMessage For="@(() => quoteMap.petOwner.cat.Quantity)" />
                             <br />
                             <label> Breed:</label>&nbsp;
-                            <InputText id="breed" class="form-control" placeholder=""
+                            <InputText id="breed" class="form-control" placeholder="Breed"
                                        @bind-Value="quoteMap.petOwner.cat.Breed" />
                             <ValidationMessage For="@(() => quoteMap.petOwner.cat.Breed)" />
                             <br />
                             <label> Age:</label>&nbsp;
-                            <MyInput id="age" class="form-control" placeholder="Age"
+                            <InputNumber id="age" class="form-control" placeholder="Age"
                                      @bind-Value="quoteMap.petOwner.cat.Age" />
                             <ValidationMessage For="@(() => quoteMap.petOwner.cat.Age)" />
                             <br />
                             <label> Weight:</label>&nbsp;
-                            <MyInput id="weight" class="form-control" placeholder="Weight"
+                            <InputNumber id="weight" class="form-control" placeholder="Weight"
                                      @bind-Value="quoteMap.petOwner.cat.Weight" />
                             <ValidationMessage For="@(() => quoteMap.petOwner.cat.Weight)" />
                             <br />
                             <br />
                             <label> Number of Dogs:</label>&nbsp;
-                            <MyInput id="numberofdogs" class="form-control" placeholder="Number of Cats"
+                            <InputNumber id="numberofdogs" class="form-control" placeholder="Number of Dogs"
                                      @bind-Value="@quoteMap.petOwner.dog.Quantity" />
                             <ValidationMessage For="@(() => quoteMap.petOwner.dog.Quantity)" />
                             <br />
                             <label> Breed:</label>&nbsp;
-                            <InputText id="breed" class="form-control" placeholder=""
+                            <InputText id="breed" class="form-control" placeholder="Breed"
                                        @bind-Value="quoteMap.petOwner.dog.Breed" />
                             <ValidationMessage For="@(() => quoteMap.petOwner.dog.Breed)" />
                             <br />
                             <label> Age:</label>&nbsp;
-                            <MyInput id="age" class="form-control" placeholder="Age"
+                            <InputNumber id="age" class="form-control" placeholder="Age"
                                      @bind-Value="quoteMap.petOwner.dog.Age" />
                             <ValidationMessage For="@(() => quoteMap.petOwner.dog.Age)" />
                             <br />
                             <label> Weight:</label>&nbsp;
-                            <MyInput id="weight" class="form-control" placeholder="Weight"
+                            <InputNumber id="weight" class="form-control" placeholder="Weight"
                                      @bind-Value="quoteMap.petOwner.dog.Weight" />
                             <ValidationMessage For="@(() => quoteMap.petOwner.dog.Weight)" />
                             <label>
@@ -172,11 +174,21 @@
                                 know about your pet(s)?
                             </label>
                             <br />
-                            <textarea @bind="quoteMap.petOwner.Instructions" />
+                            <textarea @bind="quoteMap.petOwner.Instructions" placeholder="Instructions"/>
                             <br />
                             <h3><strong>Travel Information</strong></h3>
                             <label>Type of Travel</label><br />
-                  
+                            <label for="traveltype" class="col-sm-2 col-form-label">
+                                Travel Type:
+                            </label>
+                            <div class="col-sm-10">
+                                <InputSelect @bind-Value="quoteMap.TravelType" class="form-control">
+                                    @foreach (var item in Enum.GetValues(typeof(TravelTypes)))
+                                    {
+                                        <option value="@item">@item</option>
+                                    }
+                                </InputSelect>
+                            </div>
                             <br />
                             <label>Date of Travel</label><br />
                             <input type="text" placeholder="Travel Date" /><br />
