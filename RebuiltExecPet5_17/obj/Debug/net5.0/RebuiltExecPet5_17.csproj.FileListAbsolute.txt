@@ -543,3 +543,4 @@ C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\bin
 C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\obj\Debug\net5.0\Razor\Components\QuoteComponent.razor.g.cs
+C:\Users\dablu\source\repos\ExecPetBlazor2\RebuiltExecPet\RebuiltExecPet5_17\obj\Debug\net5.0\RebuiltExecPet5_17.MvcApplicationPartsAssemblyInfo.cs
