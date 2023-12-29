@@ -66,23 +66,6 @@ namespace RebuiltExecPetAPI.Repositories
 
         public async Task<Quote> CreateAQuote(QuoteMap obj)
         {
-
-            /*  
-         
-            {
-              "petOwner": {
-                "petOwnerId": 1,
-                "firstName": "Kirk",
-                "lastName": "Thomas",
-                "email": "dablumaroon@gmail.com",
-                "phoneNumber": "1-444-555-6666",
-                "cellNumber": "1=999-222-3333",
-                "instructions": "Drive slowly"
-              },
-              "travelType": 2
-            }
-            
-             */
             Quote q = new Quote();
             q.petOwner = new PetOwner();
             q.petOwner.PetOwnerId = 1;

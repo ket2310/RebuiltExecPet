@@ -11,6 +11,6 @@ namespace RebuiltExecPet5_17.Services
         Task<Quote> GetQuote();               
         Task<Quote> GetQuote(int id);
         Task<Quote> UpdateQuote(Quote updatedQuote);
-        Task<Quote> CreateQuote(Quote quote);
+        Task<Quote> CreateQuote(Quote newQuote);
     }
 }

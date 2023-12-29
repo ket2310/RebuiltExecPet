@@ -7,6 +7,7 @@ using RebuiltExecPetAPI.Models;
 using AutoMapper;
 using RebuiltExecPet5_17.Services;
 using RebuiltExecPetAPI.MapModels;
+using RebuiltExecPetAPI.Enums;
 
 namespace RebuiltExecPet5_17.Components
 {
@@ -38,6 +39,12 @@ namespace RebuiltExecPet5_17.Components
             {
                 Quote = new Quote
                 {
+                    petOwner = new PetOwner()
+                    {
+                        dog = new Dog(),
+                        cat = new Cat()
+                    },
+                    TravelType = TravelTypes.TwoWay
                    
                 };
             }

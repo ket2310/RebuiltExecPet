@@ -2,23 +2,22 @@
 @using RebuiltExecPet5_17.Pages;
 @using RebuiltExecPetAPI.Models;
 @inherits QuoteComponentBase
-<h3>Quote Component</h3>
-
 
 
 <div>
     <div>
         <h1>
             <center>
-                <j1>You are here</j1>
+                
                 <strong>Request a FREE QUOTE - FILL OUT FORM BELOW</strong>
             </center>
+            <br />
         </h1>
         <table style="width: 100%; padding: 15,15,15,15;">
             <tr>
-                <td style="width: 50%;">
+                <td style="width: 50%; vertical-align:top">
                     <p>
-                        EXEC PET TRANSPORTATION is a nonstop private luxury
+                        <strong> EXEC PET TRANSPORTATION</strong> is a nonstop private luxury
                         transport service dedicated to providing the best pet travel
                         experience for your beloved pet and peace of mind for you
                     </p>
@@ -95,7 +94,7 @@
                     <EditForm Model="@quoteMap" OnValidSubmit="HandleValidSubmit">
                         <div>
                             <label> Your First Name:</label>&nbsp;
-                            <InputText id="firstName" @bind-value="quoteMap.petOwner.FirstName" class="form-control"></InputText>
+                            <InputText id="firstName" @bind-Value="quoteMap.petOwner.FirstName" class="form-control"></InputText>
                             <ValidationMessage For="@(() => quoteMap.petOwner.FirstName)" />
 
                             <label> Your Last Name:</label>&nbsp;
@@ -127,6 +126,111 @@
                             </h3>
 
                             <p>Please fill out all applicable fields</p>
+
+                                                        <label> Number of Cats:</label>&nbsp;
+                            <MyInput id="numberofcats" class="form-control" placeholder="Number of Cats"
+                                     @bind-Value="@quoteMap.petOwner.cat.Quantity" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.cat.Quantity)" />
+                            <br />
+                            <label> Breed:</label>&nbsp;
+                            <InputText id="breed" class="form-control" placeholder=""
+                                       @bind-Value="quoteMap.petOwner.cat.Breed" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.cat.Breed)" />
+                            <br />
+                            <label> Age:</label>&nbsp;
+                            <MyInput id="age" class="form-control" placeholder="Age"
+                                     @bind-Value="quoteMap.petOwner.cat.Age" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.cat.Age)" />
+                            <br />
+                            <label> Weight:</label>&nbsp;
+                            <MyInput id="weight" class="form-control" placeholder="Weight"
+                                     @bind-Value="quoteMap.petOwner.cat.Weight" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.cat.Weight)" />
+                            <br />
+                            <br />
+                            <label> Number of Dogs:</label>&nbsp;
+                            <MyInput id="numberofdogs" class="form-control" placeholder="Number of Cats"
+                                     @bind-Value="@quoteMap.petOwner.dog.Quantity" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.dog.Quantity)" />
+                            <br />
+                            <label> Breed:</label>&nbsp;
+                            <InputText id="breed" class="form-control" placeholder=""
+                                       @bind-Value="quoteMap.petOwner.dog.Breed" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.dog.Breed)" />
+                            <br />
+                            <label> Age:</label>&nbsp;
+                            <MyInput id="age" class="form-control" placeholder="Age"
+                                     @bind-Value="quoteMap.petOwner.dog.Age" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.dog.Age)" />
+                            <br />
+                            <label> Weight:</label>&nbsp;
+                            <MyInput id="weight" class="form-control" placeholder="Weight"
+                                     @bind-Value="quoteMap.petOwner.dog.Weight" />
+                            <ValidationMessage For="@(() => quoteMap.petOwner.dog.Weight)" />
+                            <label>
+                                Any special instructions/medical information we need to
+                                know about your pet(s)?
+                            </label>
+                            <br />
+                            <textarea @bind="quoteMap.petOwner.Instructions" />
+                            <br />
+                            <h3><strong>Travel Information</strong></h3>
+                            <label>Type of Travel</label><br />
+                  
+                            <br />
+                            <label>Date of Travel</label><br />
+                            <input type="text" placeholder="Travel Date" /><br />
+                            <label>Date of Return</label><br />
+                            <input type="text" placeholder="Return Date" /><br />
+                            <br />
+                            <br />
+                            <h3><strong>Pickup Address</strong></h3>
+
+                            <label>Address Line 1</label><br />
+                            <input type="text" /><br />
+                            <label>Address Line 2</label><br />
+                            <input type="text" /><br />
+
+                            <table>
+                                <tr>
+                                    <td><label>City</label></td>
+                                    <td><label>State</label></td>
+                                    <td><label>Zip</label></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="text" />
+                                    </td>
+                                    <td>
+                                        <input type="text" />
+                                    </td>
+                                    <td><input type="text" /></td>
+                                </tr>
+                            </table>
+                            <br />
+                            <br />
+                            <h3><strong>Destination Address</strong></h3>
+                            <label>Address Line 1</label><br />
+                            <input type="text" /><br />
+                            <label>Address Line 2</label><br />
+                            <input type="text" /><br />
+                            <table>
+                                <tr>
+                                    <td><label>City</label></td>
+                                    <td><label>State</label></td>
+                                    <td><label>Zip</label></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="text" />
+                                    </td>
+                                    <td>
+                                        <input type="text" />
+                                    </td>
+                                    <td><input type="text" /></td>
+                                </tr>
+                            </table>
+                            <br />
 
                             <button>Submit</button>
                         </div>

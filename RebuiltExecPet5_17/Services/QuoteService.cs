@@ -1,6 +1,7 @@
 ﻿using RebuiltExecPet5_17.Pages;
 using RebuiltExecPetAPI.Models;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -28,12 +29,13 @@ namespace RebuiltExecPet5_17.Services
 
 
 
-        public async Task<Quote> CreateQuote(Quote quote)
+        public async Task<Quote> CreateQuote(Quote newQuote)
         {
-            var response = await _httpClient.PostAsJsonAsync<Quote>("api/Quotes", quote);
+            var response = await _httpClient.PostAsJsonAsync<Quote>("api/Quotes", newQuote);
 
             if (response.IsSuccessStatusCode)
-                return quote;
+                return newQuote;
+
             return null;
         }
 
